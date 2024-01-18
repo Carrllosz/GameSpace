@@ -8,7 +8,7 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
 - Node.js e npm (Node Package Manager)
 - MongoDB
 - Git
-- 
+  
 ### Configuração do Projeto
 
 1. Clone o repositório:
