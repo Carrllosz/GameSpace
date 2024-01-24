@@ -2,6 +2,13 @@
 
 Este é um site desenvolvido utilizando a biblioteca React, o qual foi projetado para auxiliar os usuários nas compras de jogos, eletrônicos e acessórios no geral. Foi criado para ser algo simples, fácil de utilizar e fléxivel, no intuito de garantir uma experiência agradável ao usuário.
 
+## 👨‍🔬 Tecnologias utilizadas:
+- React
+- Node.js
+- MongoDB
+- Express
+
+
 ## Pré-requisitos 📎
 Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
