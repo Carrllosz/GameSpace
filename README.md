@@ -35,7 +35,7 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
 
 ## Contato 📞
 
-Em caso de dúvidas ou problemas, entre em contato conosco pelo email joaocar2003@gmail.com ou abra uma issue neste repositório.
+Em caso de dúvidas ou problemas, entre em contato conosco pelo email joaocar2003@gmail.com ou isaakawan123456@gmail.com.
 
 ## Mais informações:
 Este link leva para a ferramenta utilizada no desenvolvimento do site, planejando e desenvolvendo em conjunto.
