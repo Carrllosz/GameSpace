@@ -18,10 +18,14 @@ app.post("/login", (req, res) => {
                 res.json("Sucesso")
             } else {
                 res.json("A senha está incorreta")
-            }
+            };
+
+            
+
         } else {
             res.json("Essa conta não existe")
         }
+        
     })
 })
 

@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
 
 export const FooterContainer = styled.footer`
-  background-color: #fff;
+  background-color: #AECAFF;
   
 `;
 
@@ -32,17 +31,6 @@ export const SocialMediaWrap = styled.div`
   }
 `;
 
-export const SocialLogo = styled(Link)`
-  color: #46258B;
-  justify-self: start;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-  font-weight: bold;
-`;
 
 export const SocialIcons = styled.div`
   display: flex;
@@ -52,6 +40,6 @@ export const SocialIcons = styled.div`
 `;
 
 export const SocialIconLink = styled.a`
-  color: #46258B;
+  color: #FF2273;
   font-size: 24px;
 `;

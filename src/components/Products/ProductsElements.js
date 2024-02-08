@@ -4,42 +4,32 @@ export const ProductsContainer = styled.div`
   max-width: 1300px;
   min-height: 100vh;
   padding: 5rem 5%;
-  background: #46258B;
+  background: #F5E7D8;
   color: #fff;
 `;
 
 export const ProductWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; /* Alterado para space-around para melhor distribuição */
+  justify-content: space-around;
   margin: 0 auto;
 `;
 
 export const ProductCard = styled.div`
-  margin: 2%; /* Ajustado para uma margem uniforme */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2%;
   line-height: 2;
   width: 46%;
-  max-width: 300px;
+  max-width: 200px;
 `;
 
 export const ProductImg = styled.img`
-  height: 300px;
+  height: 200px;
   width: 100%;
-  object-fit: cover; /* Corrigindo imagens amassadas */
-  border-radius: 8px; /* Adicionado borda para melhor aparência */
-  box-shadow: 8px 8px #fdc500;
-`;
-
-export const ProductsHeading = styled.h1`
-  font-size: clamp(2rem, 2.5vw, 3rem);
-  text-align: center;
-  margin-bottom: 5rem;
-`;
-
-export const ProductTitle = styled.h2`
-  font-weight: 400;
-  font-size: 1.5rem;
-  margin-bottom: 1rem; /* Adicionado espaçamento inferior */
+  object-fit: cover;
+  border-radius: 8px;
 `;
 
 export const ProductInfo = styled.div`
@@ -48,29 +38,40 @@ export const ProductInfo = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 1rem;
 `;
 
-export const ProductDesc = styled.p`
-  margin-bottom: 1rem;
+export const ProductTitle = styled.h2`
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #FF2273;
 `;
+
 
 export const ProductPrice = styled.p`
-  font-size: 2rem;
-  margin-bottom: 1rem; /* Adicionado espaçamento inferior */
+  font-size: 1.1rem;
+  color: #FF2273;
 `;
 
 export const ProductButton = styled.button`
-  font-size: 1rem;
-  padding: 1rem 2rem;
-  border: none;
-  background: #e31837;
+  font-size: 0.7rem;
+  height: 50px;
+  margin: 1rem 1rem ;
+  width: 100%;
+  border-radius: 30px;
+  background: #FF2273;
   color: #fff;
   transition: 0.2 ease-out;
+  border-color: transparent ;
 
   &:hover {
-    background: #ffc500;
+    background: #fff;
     transition: 0.2s ease-out;
     cursor: pointer;
-    color: #000;
+    color: #FF2273;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 100%; /* Define a largura para 100% em telas menores que 768px */
   }
 `;

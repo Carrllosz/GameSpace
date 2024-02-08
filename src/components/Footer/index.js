@@ -5,7 +5,7 @@ import {
 
 import {
     FooterContainer, FooterWrap, SocialMedia, 
-    SocialMediaWrap, SocialLogo, SocialIcons, SocialIconLink
+    SocialMediaWrap, SocialIcons, SocialIconLink
 } from './FooterElements';
 
 const Footer = () => {
@@ -14,7 +14,6 @@ const Footer = () => {
         <FooterWrap>
             <SocialMedia>
                 <SocialMediaWrap>
-                    <SocialLogo to='/'>Game</SocialLogo>
                     <SocialIcons>
                         <SocialIconLink href='/' target='_blank' aria-label='Facebook'>
                             <FaFacebook />

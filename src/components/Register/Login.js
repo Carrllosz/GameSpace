@@ -26,6 +26,7 @@ const Login = () => {
       .then(result => {
         console.log(result)
         if(result.data === "Sucesso") {
+          
           navigate('/')
         } 
       })

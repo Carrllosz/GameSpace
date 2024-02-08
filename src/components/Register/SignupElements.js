@@ -68,6 +68,7 @@ export const SingupButton = styled.button`
 export const RouteLogin = styled.div`
     font-size: 0.9rem;
     margin-top: 5px;
+    justify-content: center;
 `;
 
 
@@ -85,4 +86,16 @@ export const ImageContainer = styled.div`
     @media (max-width: 768px) {
         display: none; /* Oculta a imagem em telas menores */
     }
+`;
+export const FormlabelUser = styled.div`
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 9px
+`;
+
+export const FormInputUser = styled.input`
+    border: 5px;
+    border-radius: 10px;
 `;

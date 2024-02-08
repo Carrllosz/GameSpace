@@ -1,32 +1,33 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
-import { FaTimes} from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
+import { Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
 export const SidebarContainer = styled.aside`
     position: fixed;
     z-index: 999;
     width: 350px;
     height: 100%;
-    background: #fff;
+    background: #E3386A;
     display: grid;
     align-items: center;
     top: 0;
     transition: 0.3s ease-in-out;
-    right: ${({isOpen}) => (isOpen ? '0' : '-1000px')};
+    right: ${({ isOpen }) => (isOpen ? '0' : '-1000px')};
 
     @media screen and (max-width: 400px) {
-        width: 100px;
+        width: 300px;
     }
 `;
 
 export const CloseIcon = styled(FaTimes)`
-    color: #46258B;
+    color: #fff;
 `;
 
 export const Icon = styled.div`
     position: absolute;
     top: 1.2rem;
-    right: 1.5rem;
+    left: 1.5rem;
     background: transparent;
     border: transparent;
     font-size: 2rem;
@@ -34,53 +35,50 @@ export const Icon = styled.div`
     outline: none;
 `;
 
-export const SidebarMenu = styled.div`
-    display: grid;
-    grid-templates-columns: 1fr;
-    grid-template-rows: repeat(3, 80px);
-    text-aling: center;
-
-    @media screen and (max-width: 480px) {
-        grid-template-rows: repeat(3, 60px);
-    }
+export const StyledMenu = styled(Menu)`
+    text-align: center;
 `;
 
-export const SidebarLink = styled(Link)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    text-decoration: none;
-    list-style: none;
-    transition: 0.2s ease-in-out;
-    color: #46258B;
-    cursor: pointer;
-    &:hover {
-        color: #FCC500;
-        transition: 0.2s ease-in-out;
-    }
-`;
-
-export const SlideBtnWrap = styled.div`
-    display: flex;
-    justify-content: center;
-`;
-
-export const SlidebarRoute = styled(Link)`
-    background: #46258B;
-    white-space: nowrap;
-    padding: 16px 64px;
+// Adicione o estilo do item do menu aqui
+export const StyledMenuItem = styled(MenuItem)`
     color: #fff;
-    font-size: 16px;
+    position: absolute;
+    font-size: 18px;
     outline: none;
     border: none;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
     text-decoration: none;
+    margin-bottom: 10px;
 
     &:hover {
+        color: #E3386A;
         transition: 0.2s ease-in-out;
-        background: #FCC500;
-        color: #fff;
+        background-color: #fff
     }
-`
+`;
+
+export const StyledSubMenu = styled(SubMenu)`
+    color: #fff;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom:12px;
+
+    &:hover {
+        color: #E3386A;
+        transition: 0.5s ease-in-out;
+    }
+`;
+
+
+export const SidebarMenu = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 50px);
+    text-align: center;
+
+    @media screen and (max-width: 480px) {
+        grid-template-rows: repeat(3, 50px);
+    }
+`;
