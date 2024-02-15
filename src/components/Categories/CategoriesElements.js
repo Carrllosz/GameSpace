@@ -13,7 +13,6 @@ export const CategorieContainer = styled.div`
 
 export const CategoriesSelect = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 `;
 
@@ -26,18 +25,9 @@ export const Categories = styled.div`
   margin: 0.3rem;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
 
-  &:hover {
-    color: #fff;
-    background-color: #e3386a;
-    transform: scale(1.1);
-  }
-
-  &:not(:hover) {
-    margin: 0.5rem;
-  }
 `;
+
 
 export const PhoneIcon = styled(FaHeadphonesAlt)`
   color: #fff;
@@ -68,13 +58,6 @@ export const PhoneText = styled.div`
   justify-content: center;
   position: absolute;
   z-index: 1;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out;
-
-  ${Categories}:hover & {
-    visibility: visible;
-    opacity: 1;
-  }
 `;
 
 export const CategorieWrapper = styled.div`

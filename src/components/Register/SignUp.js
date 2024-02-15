@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { SignContainer, SingupForm, FormInput, FormLabel, SingupButton, Title, SignFormContainer, ImageContainer, RouteLogin, FormlabelUser, FormInputUser } from './SignupElements';
-import {  Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const SignUp = () => {
-    const [name, setName] = useState()
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const [userType, setUserType] = useState('user')
-    const navigate = useNavigate()
+const SignUp = ({ userType, setUserType }) => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,12 +16,11 @@ const SignUp = () => {
         axios.post('http://localhost:3001/register', { name, email, password, userType })
           .then(result => {
             console.log(result);
-            setUserType('user');
+            setUserType('user'); // Exemplo de atualização do userType
             navigate('/login');
           })
           .catch(err => console.log(err));
       }
-
 
     return (
         <SignContainer>
@@ -54,4 +52,4 @@ const SignUp = () => {
     );
 }
 
-export default SignUp
+export default SignUp;

@@ -18,6 +18,7 @@ export const TextCategories = styled.div`
   font-weight: bold;
   color: #FF2273;
   padding-bottom: 20px;
+  height: 70px
 `;
 
 export const CategoriesWrapper = styled.div`

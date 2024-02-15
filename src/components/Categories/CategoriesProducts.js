@@ -13,23 +13,23 @@ import {
   PhoneIcon,
   ShirtIcon,
   GameIcon,
-  PhoneText
+  PhoneText,
 } from './CategoriesElements';
 
-const Categorie = ({ data }) => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+import { Data } from './data';
+
+const CategoriesProducts = () => {
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const toggleCategory = (categoryId) => {
-    if (selectedCategory === categoryId) {
-      setSelectedCategory(null);
-    } else {
-      setSelectedCategory(categoryId);
-    }
+    setSelectedCategory((prevCategory) => {
+      return prevCategory === categoryId ? "" : categoryId;
+    });
   };
 
-  const filteredData = selectedCategory
-    ? data.filter(item => item.category === selectedCategory)
-    : data;
+  const filteredData = selectedCategory ? 
+    Data.filter(item => item.category === selectedCategory) : 
+    Data;
 
   return (
     <div>
@@ -37,7 +37,7 @@ const Categorie = ({ data }) => {
         <CategoriesSelect>
           <Categories onClick={() => toggleCategory('jogos')}>
             {selectedCategory === 'jogos' ? (
-              <PhoneText>Jogos</PhoneText>
+              <PhoneText>jogos</PhoneText>
             ) : (
               <GameIcon />
             )}
@@ -45,7 +45,7 @@ const Categorie = ({ data }) => {
 
           <Categories onClick={() => toggleCategory('eletrônicos')}>
             {selectedCategory === 'eletrônicos' ? (
-              <PhoneText>Eletrônicos</PhoneText>
+              <PhoneText>eletrônicos</PhoneText>
             ) : (
               <PhoneIcon />
             )}
@@ -53,7 +53,7 @@ const Categorie = ({ data }) => {
 
           <Categories onClick={() => toggleCategory('roupas')}>
             {selectedCategory === 'roupas' ? (
-              <PhoneText>Roupas</PhoneText>
+              <PhoneText>roupas</PhoneText>
             ) : (
               <ShirtIcon />
             )}
@@ -63,7 +63,7 @@ const Categorie = ({ data }) => {
         <CategorieWrapper>
           {filteredData.map((item, index) => (
             <CategorieCard key={index}>
-              <CategorieImg src={item.img} alt={item.alt} id={item.category}/>
+              <CategorieImg src={item.img} alt={item.alt} />
               <CategorieInfo>
                 <CategorieTitle>{item.name}</CategorieTitle>
                 <CategoriePrice>{item.price}</CategoriePrice>
@@ -75,6 +75,6 @@ const Categorie = ({ data }) => {
       </CategorieContainer>
     </div>
   );
-};
+}
 
-export default Categorie;
+export default CategoriesProducts;

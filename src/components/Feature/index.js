@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
-import { FeatureContainer, FeatureButton } from './FeatureElements';
+import { FeatureContainer, FeatureButton, ImageContainer, TextFeatures, ImageWrapper } from './FeatureElements';
 import stray from '../../images/stray.jpg';
 import it from '../../images/it.jpg';
+import red from '../../images/red.jpg';
+
 
 const Feature = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     {
-      title: 'Jogo do Momento',
-      description: 'Stray (2022)',
       imageUrl: stray,
-      buttonText: 'Compre agora',
     },
     {
-      title: 'Jogo do Momento',
-      description: 'It takes two (2023)',
       imageUrl: it,
-      buttonText: 'Compre agora',
+   },
+    {
+      imageUrl: red,
     },
   ];
 
@@ -30,15 +29,17 @@ const Feature = () => {
   };
 
   return (
-    <FeatureContainer imageUrl={slides[currentSlide].imageUrl}>
-      <h1>{slides[currentSlide].title}</h1>
-      <p>{slides[currentSlide].description}</p>
-      <FeatureButton>{slides[currentSlide].buttonText}</FeatureButton>
-
-      <div className="arrows">
-        <span className="arrow" onClick={handlePrevSlide}>❮</span>
-        <span className="arrow" onClick={handleNextSlide}>❯</span>
-      </div>
+    <FeatureContainer>
+      <TextFeatures>Jogos Mais Vendidos</TextFeatures>
+      <FeatureButton direction="prev" onClick={handlePrevSlide}>{'❮'}</FeatureButton>
+      <ImageContainer style={{ transform: `translateX(-${currentSlide * 720}px)` }}>
+        {slides.map((slide, index) => (
+          <ImageWrapper key={index}>
+            <img src={slide.imageUrl} alt={slide.title} />
+          </ImageWrapper>
+        ))}
+      </ImageContainer>
+      <FeatureButton direction="next" onClick={handleNextSlide}>{'❯'}</FeatureButton>
     </FeatureContainer>
   );
 };

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import { Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { WiDirectionLeft } from "react-icons/wi";
 
 export const SidebarContainer = styled.aside`
     position: fixed;
@@ -24,6 +24,12 @@ export const CloseIcon = styled(FaTimes)`
     color: #fff;
 `;
 
+export const BackIcon = styled(WiDirectionLeft)`
+  color: #fff;
+  width: 30px;
+  height: 30px;
+`;
+
 export const Icon = styled.div`
     position: absolute;
     top: 1.2rem;
@@ -37,6 +43,10 @@ export const Icon = styled.div`
 
 export const StyledMenu = styled(Menu)`
     text-align: center;
+    background-color: #E3386A;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
 `;
 
 // Adicione o estilo do item do menu aqui
@@ -44,16 +54,14 @@ export const StyledMenuItem = styled(MenuItem)`
     color: #fff;
     position: absolute;
     font-size: 18px;
-    outline: none;
-    border: none;
+    background: #E3386A;
     cursor: pointer;
     text-decoration: none;
-    margin-bottom: 10px;
 
     &:hover {
         color: #E3386A;
         transition: 0.2s ease-in-out;
-        background-color: #fff
+        background-color: #fff;
     }
 `;
 
@@ -67,7 +75,8 @@ export const StyledSubMenu = styled(SubMenu)`
 
     &:hover {
         color: #E3386A;
-        transition: 0.5s ease-in-out;
+        transition: 0.2s ease-in-out;
+        background-color: #fff;
     }
 `;
 
