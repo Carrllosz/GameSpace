@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import game from '../../images/login2.jpg';
+import game from '../../images/login3.png';
 
 export const LoginContainer = styled.div`
     display: grid;
@@ -13,10 +13,10 @@ export const LoginContainer = styled.div`
 `;
 
 export const LoginFormContainer = styled.div`
-    background: #fff;
+    background: #F5E7D8;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 25px;
     border-radius: 10px;
@@ -24,7 +24,7 @@ export const LoginFormContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-    color: #46258B; /* Cor alterada para contrastar com o fundo branco */
+    color: #FEBAC5; /* Cor alterada para contrastar com o fundo branco */
     font-size: 2rem;
     margin-bottom: 16px;
 `;
@@ -32,30 +32,38 @@ export const Title = styled.h1`
 export const LoginForm = styled.form`
     max-width: 350px;
     width: 100%;
+    margin-top: 50px;
 `;
 
 export const FormLabel = styled.label`
     font-size: 1rem;
     margin-bottom: 8px;
     display: block;
+    color: #DF2469;
 `;
 
 export const FormInput = styled.input`
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    height: 40px;
+    border: 1px solid #FEBAC5;
+    border-radius: 20px;
     box-sizing: border-box;
+    background: #FEBAC5;
 `;
 
 export const LoginButton = styled.button`
-    width: 100%;
+    width: 40%;
     padding: 10px;
-    background: #46258B;
-    color: #fff;
+    background: #FEBAC5;
+    color: #DF2469;
+    font-size: 1rem;
+    font-weight: bold;
     border: none;
-    border-radius: 4px;
+    margin-left: 15vh;
+    margin-top: 35vh;
+    border-radius: 20px;
     cursor: pointer;
     transition: background 0.3s ease;
 
@@ -67,12 +75,13 @@ export const LoginButton = styled.button`
 
 export const RouteSingup = styled.div`
     font-size: 0.9rem;
-    margin-top: 5px;
+    color: #DF2469;
 `;
 
+
 export const ImageContainer = styled.div`
-    background: linear-gradient(to right, rgba(0,0,0,0.7),
-    rgba(0,0,0,0.1)), 
+    background: linear-gradient(to right, rgba(0,0,0,0),
+    rgba(0,0,0,0)), 
     url(${game});
     background-position: center;
     background-size: cover;

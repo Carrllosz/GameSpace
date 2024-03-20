@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 import {
   Title,
   LoginContainer,
@@ -13,36 +13,56 @@ import {
 import { Link } from 'react-router-dom'; 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import Validation from './LoginValidation'
 
 const Login = () => {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [ values, setValues] = useState({
+    email: '',
+    senha: ''
+  })
+  const [errors, setErrors] = useState({})
 
-  const handleSubmit = (e) => {
-      e.preventDefault()
-      axios.post('http://localhost:3001/login', { email, password})
-      .then(result => {
-        console.log(result)
-        if(result.data === "Sucesso") {
-          
-          navigate('/')
-        } 
-      })
-      .catch(err=> console.log(err))
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setErrors(Validation(values));
+  
+    if (Object.keys(errors).length === 0) {
+      axios.post('http://localhost:8800/user/login', values)
+        .then(res => {
+          if (res.data === "Sucesso") {
+            navigate("/"); // Navigate to the home page upon successful login
+          } else {
+            alert("Não há usuário com essas credenciais!");
+          }
+        })
+        .catch(err => {
+          // Error handling
+          console.error("Erro durante a requisição:", err);
+          alert("Ocorreu um erro durante a autenticação. Por favor, tente novamente mais tarde.");
+        });
+    }
+  }
+  
+  
+
   return (
     <LoginContainer>
       <LoginFormContainer>
         <Title>Login</Title>
         <LoginForm onSubmit={handleSubmit}>
           <FormLabel htmlFor="email">E-mail</FormLabel>
-          <FormInput type="text" id="email" placeholder='Digite seu e-mail' onChange={(e) => setEmail(e.target.value)}/>
+          <FormInput type="text" id="email" name="email" onChange={handleInput}/>
+          {errors.email && <span className='text-danger'>{errors.email}</span>}
           <FormLabel htmlFor="password">Senha</FormLabel>
-          <FormInput type="password" id="password" placeholder='Digite sua senha' onChange={(e) => setPassword(e.target.value)}/>
+          <FormInput type="password" id="password" name="senha" onChange={handleInput}/>
+          {errors.senha && <span className='text-danger'>{errors.senha}</span>}
+          <RouteSingup>Não tem uma conta? <Link to="/signup"> Clique aqui</Link></RouteSingup>
           <LoginButton type="submit">Login</LoginButton>
-          <RouteSingup>Não tem uma conta? <Link to="/Signup"> Clique aqui</Link></RouteSingup>
         </LoginForm>
       </LoginFormContainer>
       <ImageContainer/>

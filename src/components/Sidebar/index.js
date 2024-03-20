@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { SidebarContainer, Icon, CloseIcon, StyledSubMenu, StyledMenuItem, StyledMenu } from './SidebarElements';
+import { SidebarContainer, Icon, CloseIcon, StyledSubMenu, StyledMenuItem, StyledMenu, GetOut, GetOutIcon } from './SidebarElements';
 import { useNavigate } from 'react-router-dom';
-import CarrinhoScreen from './carrinhoscreen'; // Corrija o import
+import CarrinhoScreen from './carrinhoscreen'; 
+
 
 const Sidebar = ({ isOpen, toggle, cartItems, userType }) => {
   const navigate = useNavigate();
@@ -11,24 +12,26 @@ const Sidebar = ({ isOpen, toggle, cartItems, userType }) => {
     setCarrinhoAberto(true);
   };
 
-  // Defina uma função para fechar a tela do carrinho
   const fecharCarrinho = () => {
     setCarrinhoAberto(false);
   };
 
   const handleLoginClick = () => {
     navigate('/Login');
-    // Comment or remove the following line to prevent the sidebar from closing
     toggle();
   }
 
   const handleSignupClick = () => {
     navigate('/SignUp');
-    // Comment or remove the following line to prevent the sidebar from closing
     toggle();
   }
 
-  console.log("cartItems no Sidebar:", cartItems); // Adicione esta linha para verificar se cartItems está sendo recebido corretamente
+  const handleAddProductClick = () => {
+    navigate('/ProductManagement'); 
+    toggle();
+  }
+
+  console.log("cartItems no Sidebar:", cartItems); 
 
   return (
     <SidebarContainer isOpen={isOpen}>
@@ -44,12 +47,7 @@ const Sidebar = ({ isOpen, toggle, cartItems, userType }) => {
           <StyledMenuItem >Jogos</StyledMenuItem>
           <StyledMenuItem >Eletrônicos</StyledMenuItem>
         </StyledSubMenu>
-        {userType === 'company' && (
-        <StyledSubMenu label="Gerenciar Produtos">
-          <StyledMenuItem >Adicionar Produto</StyledMenuItem>
-          <StyledMenuItem>Remover Produto</StyledMenuItem>
-        </StyledSubMenu>
-        )}
+        <StyledMenuItem onClick={handleAddProductClick}>Gerenciar Produtos</StyledMenuItem>
       </StyledMenu>
       {carrinhoAberto && <CarrinhoScreen onClose={fecharCarrinho} cartItems={cartItems} />}
     </SidebarContainer>

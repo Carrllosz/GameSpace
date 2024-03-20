@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   CategorieContainer,
   CategorieWrapper,
@@ -15,11 +15,26 @@ import {
   GameIcon,
   PhoneText,
 } from './CategoriesElements';
-
-import { Data } from './data';
+import axios from 'axios';
+import { useProductContext } from '../ProductContext';
 
 const CategoriesProducts = () => {
+  const { setSelectedProduct } = useProductContext();
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProductsByCategory = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8800/produtos?categoria=${selectedCategory}`);
+        setProducts(res.data);
+      } catch(err) {
+        console.log(err);
+      }
+    };
+
+    fetchProductsByCategory();
+  }, [selectedCategory]);
 
   const toggleCategory = (categoryId) => {
     setSelectedCategory((prevCategory) => {
@@ -27,9 +42,9 @@ const CategoriesProducts = () => {
     });
   };
 
-  const filteredData = selectedCategory ? 
-    Data.filter(item => item.category === selectedCategory) : 
-    Data;
+  const handleAddToCart = (produto) => {
+    setSelectedProduct(produto); // Atualize o produto selecionado no contexto de produto
+  };
 
   return (
     <div>
@@ -37,7 +52,7 @@ const CategoriesProducts = () => {
         <CategoriesSelect>
           <Categories onClick={() => toggleCategory('jogos')}>
             {selectedCategory === 'jogos' ? (
-              <PhoneText>jogos</PhoneText>
+              <PhoneText>Jogos</PhoneText>
             ) : (
               <GameIcon />
             )}
@@ -45,7 +60,7 @@ const CategoriesProducts = () => {
 
           <Categories onClick={() => toggleCategory('eletrônicos')}>
             {selectedCategory === 'eletrônicos' ? (
-              <PhoneText>eletrônicos</PhoneText>
+              <PhoneText>Eletrônicos</PhoneText>
             ) : (
               <PhoneIcon />
             )}
@@ -53,7 +68,7 @@ const CategoriesProducts = () => {
 
           <Categories onClick={() => toggleCategory('roupas')}>
             {selectedCategory === 'roupas' ? (
-              <PhoneText>roupas</PhoneText>
+              <PhoneText>Roupas</PhoneText>
             ) : (
               <ShirtIcon />
             )}
@@ -61,13 +76,13 @@ const CategoriesProducts = () => {
         </CategoriesSelect>
 
         <CategorieWrapper>
-          {filteredData.map((item, index) => (
+          {products.map((produto, index) => (
             <CategorieCard key={index}>
-              <CategorieImg src={item.img} alt={item.alt} />
+              <CategorieImg src={produto.foto} alt={produto.alt} />
               <CategorieInfo>
-                <CategorieTitle>{item.name}</CategorieTitle>
-                <CategoriePrice>{item.price}</CategoriePrice>
-                <CategorieButton>{item.button}</CategorieButton>
+                <CategorieTitle>{produto.nome}</CategorieTitle>
+                <CategoriePrice>{produto.preco}</CategoriePrice>
+                <CategorieButton onClick={() => handleAddToCart(produto)}>Adicionar ao carrinho</CategorieButton>
               </CategorieInfo>
             </CategorieCard>
           ))}

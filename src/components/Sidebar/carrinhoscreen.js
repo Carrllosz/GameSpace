@@ -1,31 +1,33 @@
 import React from 'react';
-import { Container, BackIcon, Name, ProductCard, ProductImg, ProductPrice } from './carrinhoElements';
+import { Container, BackIcon, Name, ProductCard, ProductImg, ProductPrice, ProductName, ProductQtd, ProductDetails, ProductInfo, Remove, ProductQtdContainer, Total, TotalContainer, ContainerPrice, Button, ButtonContainer } from './carrinhoElements';
+import { useProductContext } from '../ProductContext'; // Importe o hook useProductContext
 
-const CarrinhoScreen = ({ onClose, cartItems }) => {
-  console.log('Itens do carrinho:', cartItems);
-  
-  // Verifica se cartItems está definido e não é nulo
-  if (!cartItems || cartItems.length === 0) {
-    return (
-      <Container>
-        <BackIcon onClick={onClose}></BackIcon>
-        <Name>Carrinho</Name>
-        <p>Nenhum item no carrinho</p>
-      </Container>
-    );
-  }
+const CarrinhoScreen = ({ onClose }) => {
+  const { selectedProduct } = useProductContext();
 
   return (
     <Container>
       <BackIcon onClick={onClose}></BackIcon>
       <Name>Carrinho</Name>
-      {/* Itera sobre os itens do carrinho somente se cartItems estiver definido */}
-      {cartItems.map((item, index) => (
-        <ProductCard key={index}>
-          <ProductImg src={item.img} alt={item.name} />
-          <ProductPrice>{item.price}</ProductPrice>
-        </ProductCard>
-      ))}
+      <ProductCard>
+        <ProductImg src={selectedProduct.foto} alt="" /> {/* Use as informações do produto selecionado */}
+        <ProductInfo>
+          <ProductName>{selectedProduct.nome}</ProductName>
+          <ProductDetails>
+            <ProductQtdContainer>
+              <ProductPrice>R$ {selectedProduct.preco}</ProductPrice>
+              <ProductQtd>1</ProductQtd> {/* A quantidade pode ser configurada de acordo com sua lógica */}
+            </ProductQtdContainer>
+            <Remove>Remover</Remove>
+          </ProductDetails>
+        </ProductInfo>
+      </ProductCard>
+      <ContainerPrice>
+        <Total>Total: </Total>
+      </ContainerPrice>
+      <ButtonContainer>
+        <Button>Finalizar Compra</Button>
+      </ButtonContainer>
     </Container>
   );
 };

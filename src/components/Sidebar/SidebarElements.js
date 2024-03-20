@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FaTimes } from 'react-icons/fa';
 import { Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { WiDirectionLeft } from "react-icons/wi";
+import { CiLogout } from "react-icons/ci";
 
 export const SidebarContainer = styled.aside`
     position: fixed;
@@ -25,6 +26,20 @@ export const CloseIcon = styled(FaTimes)`
 `;
 
 export const BackIcon = styled(WiDirectionLeft)`
+  color: #fff;
+  width: 30px;
+  height: 30px;
+`;
+
+export const GetOut = styled.div`
+  color: #fff;
+  left: 270px;
+  top: 60px;
+  cursor: pointer;
+  position: relative;
+`;
+
+export const GetOutIcon = styled(CiLogout)`
   color: #fff;
   width: 30px;
   height: 30px;
@@ -71,7 +86,6 @@ export const StyledSubMenu = styled(SubMenu)`
     outline: none;
     border: none;
     cursor: pointer;
-    margin-bottom:12px;
 
     &:hover {
         color: #E3386A;

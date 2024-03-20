@@ -18,14 +18,19 @@ export const CategoriesSelect = styled.div`
 
 export const Categories = styled.div`
   display: flex;
-  width: 60px;
+  width: ${({ hasText }) => (hasText ? '100px' : '60px')}; /* Ajuste de largura */
   height: 60px;
   background-color: #aecaff;
   border-radius: 50%;
   margin: 0.3rem;
   align-items: center;
   justify-content: center;
+  position: relative; /* Adicionado para posicionar o PhoneText */
 
+
+  &:hover {
+    background-color: #FF2273; 
+  }
 `;
 
 
@@ -49,15 +54,23 @@ export const GameIcon = styled(RiGameLine)`
 
 export const PhoneText = styled.div`
   color: #fff;
-  font-size: 0.7rem;
-  width: 60px;
+  font-size: 0.9rem;
+  width: 175px;
   height: 60px;
-  border-radius: 50%;
+  border-radius: 10px;
   display: flex;
+  position: absolute;
+  background-color: #aecaff;
+  margin: 1rem;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  z-index: 1;
+  left: 10px; /* Ajuste da posição */
+  z-index: 999;
+
+  &:hover {
+    background-color: #FF2273; 
+  }
+
 `;
 
 export const CategorieWrapper = styled.div`

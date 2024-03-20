@@ -1,11 +1,10 @@
 // app.js
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Outlet  } from 'react-router-dom';
 import { GlobalStyle } from './globalStyles';
 import Hero from './components/Hero';
 import Products from './components/Products';
-import { productData } from './components/Products/data';
-import { Data } from './components/Categories/data';
+import AddProduct from './components/Product Management/AddProducts';
 import Feature from './components/Feature';
 import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
@@ -13,6 +12,9 @@ import Menu from './components/Menu/Menu';
 import Login from './components/Register/Login';
 import SignUp from './components/Register/SignUp';
 import Categorie from './components/Categories/CategoriesProducts';
+import ProductPage from './components/ProductPage/ProductPage';
+import SidebarComments from './components/ProductPage/SidebarComments';
+import { ProductProvider } from './components/ProductContext';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,8 +33,10 @@ function App() {
   return (
     <Router>
       <GlobalStyle />
+      <ProductProvider>
       {/* Passando userType para o Sidebar */}
       <Sidebar isOpen={sidebarOpen} toggle={toggleSidebar} cartItems={cartItems} userType={userType} />
+
       <Routes>
         <Route
           path="/"
@@ -40,21 +44,34 @@ function App() {
             <>
               <Hero toggleSidebar={toggleSidebar} />
               {/* Passando a função addToCart para o componente Products */}
-              <Products data={Data} addToCart={addToCart} />
+              <Products addToCart={addToCart} />
               <Feature />
               <Menu />
-              <Categorie data={productData} />
+              <Categorie />
+              
               <Footer />
             </>
           }
         />
+        <Route path="/" element={<Outlet />}>
+        <Route
+          path="/ProductPage"
+          element={
+            <>
+              <ProductPage toggleSidebar={toggleSidebar} />
+              <SidebarComments isOpen={sidebarOpen} toggle={toggleSidebar} />
+            </>
+          }
+        />
+        <Route path="/ProductManagement" element={<AddProduct />} />
         <Route path="/Login" element={<Login />} />
         <Route 
-          path="/SignUp" 
-          // Passando setUserType como uma propriedade para que SignUp possa atualizá-lo
-          element={<SignUp userType={userType} setUserType={setUserType} />} 
+          path="/signup" 
+          element={<SignUp/>} 
         />
+        </Route>
       </Routes>
+      </ProductProvider>
     </Router>
   );
 }

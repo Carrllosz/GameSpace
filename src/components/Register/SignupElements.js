@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import game from '../../images/login2.jpg';
+import game from '../../images/login3.png';
 
 export const SignContainer = styled.div`
     display: grid;
@@ -13,7 +13,7 @@ export const SignContainer = styled.div`
 `;
 
 export const SignFormContainer = styled.div`
-    background: #fff;
+    background: #F5E7D8;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,7 +24,7 @@ export const SignFormContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-    color: #46258B; /* Cor alterada para contrastar com o fundo branco */
+    color: #FEBAC5; /* Cor alterada para contrastar com o fundo branco */
     font-size: 2rem;
     margin-bottom: 16px;
 `;
@@ -38,24 +38,31 @@ export const FormLabel = styled.label`
     font-size: 1rem;
     margin-bottom: 8px;
     display: block;
+    color: #DF2469;
 `;
 
 export const FormInput = styled.input`
     width: 100%;
     padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
+    height: 40px;
+    margin-bottom: 12px;
+    border: 1px solid #FEBAC5;
     border-radius: 4px;
     box-sizing: border-box;
+    background: #fff;
 `;
 
 export const SingupButton = styled.button`
-    width: 100%;
+    width: 40%;
     padding: 10px;
-    background: #46258B;
-    color: #fff;
+    background: #FEBAC5;
+    color: #DF2469;
+    font-size: 1rem;
+    font-weight: bold;
     border: none;
-    border-radius: 4px;
+    margin-left: 15vh;
+    margin-top: 30vh;
+    border-radius: 20px;
     cursor: pointer;
     transition: background 0.3s ease;
 
@@ -68,13 +75,15 @@ export const SingupButton = styled.button`
 export const RouteLogin = styled.div`
     font-size: 0.9rem;
     margin-top: 5px;
-    justify-content: center;
+    text-align: center;
+    color: #DF2469;
+
 `;
 
 
 export const ImageContainer = styled.div`
-    background: linear-gradient(to right, rgba(0,0,0,0.7),
-    rgba(0,0,0,0.1)), 
+    background: linear-gradient(to right, rgba(0,0,0,0),
+    rgba(0,0,0,0)), 
     url(${game});
     background-position: center;
     background-size: cover;
@@ -92,7 +101,9 @@ export const FormlabelUser = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding-bottom: 9px
+    padding-bottom: 9px;
+    color: #DF2469;
+
 `;
 
 export const FormInputUser = styled.input`
