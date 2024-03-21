@@ -47,7 +47,7 @@ const SignUp = () => {
         if (Object.keys(error).length === 0) {
             axios.post('http://localhost:8800/user/signup', values)
             .then(res => {
-                navigate('/login');
+                navigate('/');
             })
             .catch(err => console.log(err));
         }
@@ -78,7 +78,7 @@ const SignUp = () => {
                         </label>
                     </FormlabelUser>
                     <SingupButton type="submit" >Sing Up</SingupButton>
-                    <RouteLogin>Já tem uma conta? <Link to="/login"> Clique aqui</Link></RouteLogin>
+                    <RouteLogin>Já tem uma conta? <Link to="/"> Clique aqui</Link></RouteLogin>
                 </SingupForm>
             </SignFormContainer>
             <ImageContainer/>

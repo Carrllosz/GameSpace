@@ -10,22 +10,21 @@ import {
   ImageContainer,
   RouteSingup,
 } from './LoginElements';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Validation from './LoginValidation'
+import Validation from './LoginValidation';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [ values, setValues] = useState({
+  const [values, setValues] = useState({
     email: '',
     senha: ''
-  })
-  const [errors, setErrors] = useState({})
+  });
+  const [errors, setErrors] = useState({});
 
   const handleInput = (event) => {
-    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
-  }
+    setValues(prev => ({...prev, [event.target.name]: event.target.value}));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,20 +34,17 @@ const Login = () => {
       axios.post('http://localhost:8800/user/login', values)
         .then(res => {
           if (res.data === "Sucesso") {
-            navigate("/"); // Navigate to the home page upon successful login
+            navigate("/dashboard"); // Redireciona para a página principal após o login
           } else {
             alert("Não há usuário com essas credenciais!");
           }
         })
         .catch(err => {
-          // Error handling
           console.error("Erro durante a requisição:", err);
           alert("Ocorreu um erro durante a autenticação. Por favor, tente novamente mais tarde.");
         });
     }
-  }
-  
-  
+  };
 
   return (
     <LoginContainer>
