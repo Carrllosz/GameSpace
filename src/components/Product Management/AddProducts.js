@@ -124,7 +124,7 @@ const AddProducts = () => {
                     <AddButton onClick={handleSubmit}>Adicionar</AddButton>
                     {error && <p>Algo deu errado! Por favor, tente novamente.</p>}
                     {success && <p>Produto adicionado com sucesso!</p>}
-                    <Link to="/">Ver todos os produtos</Link>
+                    <Link to="/View">Ver todos os produtos</Link>
                 </InfoContainer>
             </InfoProductContainer>
         </AddProductsContainer>

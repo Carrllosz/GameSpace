@@ -21,14 +21,16 @@ const ProductPage = ({ toggleSidebar }) => { // Altere o nome da prop para toggl
         <Bars></Bars>
       </NavIcon>
       <InfoProductContainer>
-        <ImageProduct>
-          <img alt="" style={{ maxWidth: '60%', maxHeight: '90%' }}></img>
-          <div style={{ width: '70%', height: '100%', backgroundColor: '#FFFFFF', borderRadius: "20px" }} />
-          <h3 style={{ fontSize: "0.8rem", color: "#097738", marginTop: "10px" }} >Quantidade no estoque: {selectedProduct.quantidade}</h3>
-        </ImageProduct>
+      <ImageProduct>
+        <img
+          alt=""
+          src={selectedProduct.foto} // Adicione esta linha para exibir a imagem do produto
+          style={{ maxWidth: '80%', maxHeight: '90%' }}
+        />
+        <h3 style={{ fontSize: "0.8rem", color: "#097738", marginTop: "10px" }} >Quantidade no estoque: {selectedProduct.quantidade}</h3>
+      </ImageProduct>
         <InfoContainer>
           <Title >{selectedProduct.nome}</Title>
-          <Owner >Marca: Apple</Owner>
           <Review><Rating />Avaliação</Review>
           <Description >{selectedProduct.descricao}</Description>
           <Price> R$ {selectedProduct.preco}</Price>

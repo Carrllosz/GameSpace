@@ -15,6 +15,7 @@ import { useProductContext } from '../ProductContext';
 const Products = () => {
   const { setSelectedProduct } = useProductContext();
   const [products, setProducts] = useState([]);
+  const isAuthenticated = true; // Modifique para false se desejar que apenas usuários autenticados possam adicionar produtos ao carrinho
 
   useEffect(() => {
     const fetchAllProducts = async () => {
@@ -26,11 +27,17 @@ const Products = () => {
       }
     };
     fetchAllProducts();
-  }, [products]); // Adicionei products como uma dependência para recarregar os produtos sempre que a lista for atualizada
+  }, [products]);
 
   const handleAddToCart = (produto) => {
-    setSelectedProduct(produto); // Atualize o produto selecionado no contexto de produto
+    if (isAuthenticated) {
+      setSelectedProduct(produto);
+    } else {
+      console.log('Usuário não autenticado. Faça login para adicionar produtos ao carrinho.');
+      // Exibir uma mensagem ou redirecionar para a página de login
+    }
   };
+
 
   return (
     <ProductsContainer>
@@ -42,7 +49,7 @@ const Products = () => {
               <ProductTitle>{produto.nome}</ProductTitle>
               <p style={{display: "none"}}>{produto.descricao}</p>
               <ProductPrice>${produto.preco}</ProductPrice>
-              <ProductButton onClick={() => handleAddToCart(produto)}>Adicionar ao carrinho</ProductButton>
+              <ProductButton onClick={() => handleAddToCart(produto)} disabled={!isAuthenticated}>Adicionar ao carrinho</ProductButton>
             </ProductInfo>
           </ProductCard>
         ))}

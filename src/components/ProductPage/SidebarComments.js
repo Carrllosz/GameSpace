@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen, toggle }) => {
           <Classificacao>Muito bom</Classificacao>
           <User>João Anjos</User>
         </ContainerUser>
-          <Comment> FDSZZZZZZZZZZZZZZZZZZZGRGREREGRG</Comment>
+          <Comment> Produto de ótima qualidade - Funcionalidade não desenvolvida.</Comment>
         </CommentsBox>
         {isAddingComment ? 
           <Button>Enviar</Button> :

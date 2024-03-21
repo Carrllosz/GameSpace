@@ -5,6 +5,7 @@ import { GlobalStyle } from './globalStyles';
 import Hero from './components/Hero';
 import Products from './components/Products';
 import AddProduct from './components/Product Management/AddProducts';
+import View from './components/Product Management/View';
 import Feature from './components/Feature';
 import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
@@ -37,6 +38,7 @@ function App() {
       {/* Passando userType para o Sidebar */}
       <Sidebar isOpen={sidebarOpen} toggle={toggleSidebar} cartItems={cartItems} userType={userType} />
 
+
       <Routes>
         <Route
           path="/"
@@ -64,6 +66,7 @@ function App() {
           }
         />
         <Route path="/ProductManagement" element={<AddProduct />} />
+        <Route path="/View" element={<View />} />
         <Route path="/Login" element={<Login />} />
         <Route 
           path="/signup" 
